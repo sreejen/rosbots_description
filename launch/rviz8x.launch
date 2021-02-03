@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+ 
+  <!--param name="robot_description" command="cat '$(find rosbots_description)/urdf/rosbots.xacro'"/-->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find rosbots_description)/urdf/rosbots8x.xacro'"/>
+  <!-- send fake joint values -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="TRUE"/>
+  </node>
+ 
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+  
+  <!--node pkg="tf" type="static_transform_publisher" name="base2wheel_fl" 
+          args="0.385 -0.28 -0.1 0.0 0.0 0.0 base_link wheel_left_fwd_link 100">
+  </node>
+
+  <node pkg="tf" type="static_transform_publisher" name="base2wheel_fr" 
+          args="-0.385 -0.28 -0.1 0.0 0.0 0.0 base_link wheel_right_fwd_link 100">
+  </node>
+
+  <node pkg="tf" type="static_transform_publisher" name="base2wheel_bl" 
+          args="0.385 0.5 -0.1 0.0 0.0 0.0 base_link wheel_left_back_link 100">
+  </node>
+
+  <node pkg="tf" type="static_transform_publisher" name="base2wheel_br" 
+          args="-0.385 0.5 -0.1 0.0 0.0 0.0 base_link wheel_right_back_link 100">
+  </node-->
+
+  <!-- Show in Rviz   -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find rosbots_description)/rviz_config/riabotconfig.rviz"/>
+ 
+</launch>

@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="rosbots" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find rosbots_description)/urdf/rosbots.gazebo.xacro" />
+  
+  <material name="black">
+        <color rgba="0.05 0.05 0.05 1"/>
+  </material>
+  <material name="copper">
+        <color rgba="0.72 0.45 0.2 1"/>
+  </material>
+  <material name="grey">
+        <color rgba="0.7 0.7 0.7 1"/>
+  </material>
+
+
+  <link name="base_footprint"/>
+
+  <joint name="base_joint" type="fixed">
+    <origin xyz="0 0 0.05" rpy="0 0 0" />
+    <parent link="base_footprint"/>
+    <child link="base_link" />
+  </joint>
+
+  <link name="base_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://rosbots_description/meshes/new/baseplate.dae" scale="8 8 8"/>
+        </geometry>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://rosbots_description/meshes/new/baseplate.dae" scale="8 8 8"/>
+        </geometry>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+      </collision>
+      <inertial>
+        <origin xyz="0.0 0 0."/>
+        <mass value="4"/> 
+        <inertia ixx="0.08" ixy="0.0" ixz="0.0"
+                 iyy="0.08" iyz="0.0" 
+                 izz="0.24" />
+      </inertial>
+  </link>
+
+
+  <joint name="mcu_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="base_link"/>
+      <child link="mcu_link" />
+  </joint>
+  <link name="mcu_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://rosbots_description/meshes/rasp.dae" scale="0.2 0.2 0.2"/>
+      </geometry>
+      <origin xyz="1.1 -1.672 0.2" rpy="0 0 1.57"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://rosbots_description/meshes/rasp.dae" scale="0.2 0.2 0.2"/>
+      </geometry>
+      <origin xyz="1.1 -1.672 0.2" rpy="0 0 1.57"/>
+    </collision>
+    <!-- inertial>
+      <origin xyz="0.01 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.019995" ixy="0.0" ixz="0.0"
+                iyy="0.019995" iyz="0.0" 
+                izz="0.03675" />
+    </inertial-->
+  </link>
+
+  <joint name="sup_joint1" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="sup_link1" />
+  </joint>
+
+  <link name="sup_link1">
+    <visual>
+      <geometry>
+        <cylinder length="0.2" radius="0.016"/>
+      </geometry>
+      <origin xyz="0.166 -0.25 0.1" rpy="0 0 0"/>
+      <material name="copper"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.2" radius="0.016"/>
+      </geometry>
+      <origin xyz="0.166 -0.25 0.1" rpy="0 0 0"/>
+    </collision>
+    <!-- inertial>
+      <origin xyz="0.01 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.019995" ixy="0.0" ixz="0.0"
+                iyy="0.019995" iyz="0.0" 
+                izz="0.03675" />
+    </inertial-->
+  </link>
+
+  <joint name="sup_joint2" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="sup_link2" />
+  </joint>
+
+  <link name="sup_link2">
+    <visual>
+      <geometry>
+        <cylinder length="0.2" radius="0.016"/>
+      </geometry>
+      <origin xyz="-0.166 0.32 0.1" rpy="0 0 0"/>
+      <material name="copper"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.2" radius="0.016"/>
+      </geometry>
+      <origin xyz="-0.166 0.32 0.1" rpy="0 0 0"/>
+    </collision>
+    <!-- inertial>
+      <origin xyz="0.01 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.019995" ixy="0.0" ixz="0.0"
+                iyy="0.019995" iyz="0.0" 
+                izz="0.03675" />
+    </inertial-->
+  </link>
+
+  <joint name="sup_joint3" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="sup_link3" />
+  </joint>
+
+  <link name="sup_link3">
+    <visual>
+      <geometry>
+        <cylinder length="0.2" radius="0.016"/>
+      </geometry>
+      <origin xyz="-0.166 -0.25 0.1" rpy="0 0 0"/>
+      <material name="copper"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.2" radius="0.016"/>
+      </geometry>
+      <origin xyz="-0.166 -0.25 0.1" rpy="0 0 0"/>
+    </collision>
+    <!-- inertial>
+      <origin xyz="0.01 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.019995" ixy="0.0" ixz="0.0"
+                iyy="0.019995" iyz="0.0" 
+                izz="0.03675" />
+    </inertial-->
+  </link>
+  
+  <joint name="sup_joint4" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="sup_link4" />
+  </joint>
+
+  <link name="sup_link4">
+    <visual>
+      <geometry>
+        <cylinder length="0.2" radius="0.016"/>
+      </geometry>
+      <origin xyz="0.166 0.32 0.1" rpy="0 0 0"/>
+      <material name="copper"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.2" radius="0.016"/>
+      </geometry>
+      <origin xyz="0.166 0.32 0.1" rpy="0 0 0"/>
+    </collision>
+    <!-- inertial>
+      <origin xyz="0.01 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.019995" ixy="0.0" ixz="0.0"
+                iyy="0.019995" iyz="0.0" 
+                izz="0.03675" />
+    </inertial-->
+  </link>
+
+  <joint name="wheel_left_fwd_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="wheel_left_fwd_link"/>
+      <origin xyz="0.385 -0.28 -0.1" rpy="0 0 0"/>
+      <axis xyz="1 0 0"/>
+  </joint>
+  <link name="wheel_left_fwd_link">
+    <collision>
+      <geometry>
+        <cylinder length="0.2" radius="0.23"/>
+      </geometry>
+      <origin rpy="0 1.57 0" xyz="0.16 0 0"/>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <!-- cylinder length="0.0206" radius="0.0550"/-->
+        <!--cylinder length="0.20" radius="0.26"/-->
+        <mesh filename="package://rosbots_description/meshes/wheel.dae" scale="8 8 8"/>
+      </geometry>
+      <origin rpy="0 1.57 0" xyz="0 0 0"/>
+    </visual>
+    <inertial>
+      <mass value="3.2" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.008" ixy="0.0" ixz="0.0"
+                iyy="0.008" iyz="0.0" 
+                izz="0.008" />
+    </inertial>
+  </link>
+
+  <joint name="wheel_right_fwd_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="wheel_right_fwd_link"/>
+      <origin xyz="-0.385 -0.28 -0.1" rpy="0 0 0"/>
+      <axis xyz="1 0 0"/>
+  </joint>
+  <link name="wheel_right_fwd_link">
+    <collision>
+      <geometry>
+        <cylinder length="0.2" radius="0.23"/>
+      </geometry>
+      <origin rpy="0 1.57 0" xyz="-0.16 0 0"/>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <!-- cylinder length="0.0206" radius="0.0550"/-->
+        <!--cylinder length="0.20" radius="0.26"/-->
+        <mesh filename="package://rosbots_description/meshes/wheel.dae" scale="8 8 8"/>
+      </geometry>
+      <origin rpy="0 -1.57 0" xyz="0 0 0"/>
+    </visual>
+    <inertial>
+      <mass value="3.2" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.008" ixy="0.0" ixz="0.0"
+                iyy="0.008" iyz="0.0" 
+                izz="0.008" />
+    </inertial>
+  </link>
+
+  <joint name="wheel_left_back_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="wheel_left_back_link"/>
+      <origin xyz="0.385 0.5 -0.1" rpy="0 0 0"/>
+      <axis xyz="1 0 0"/>
+  </joint>
+  <link name="wheel_left_back_link">
+    <collision>
+      <geometry>
+        <cylinder length="0.2" radius="0.23"/>
+      </geometry>
+      <origin rpy="0 1.57 0" xyz="0.16 0 0"/>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <!-- cylinder length="0.0206" radius="0.0550"/-->
+        <!--cylinder length="0.20" radius="0.26"/-->
+        <mesh filename="package://rosbots_description/meshes/wheel.dae" scale="8 8 8"/>
+      </geometry>
+      <origin rpy="0 1.57 0" xyz="0 0 0"/>
+    </visual>
+    <inertial>
+      <mass value="3.2" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.008" ixy="0.0" ixz="0.0"
+                iyy="0.008" iyz="0.0" 
+                izz="0.008" />
+    </inertial>
+  </link>
+
+  <joint name="wheel_right_back_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="wheel_right_back_link"/>
+      <origin xyz="-0.385 0.5 -0.1" rpy="0 0 0"/>
+      <axis xyz="1 0 0"/>
+  </joint>
+  <link name="wheel_right_back_link">
+    <collision>
+      <geometry>
+        <cylinder length="0.2" radius="0.23"/>
+      </geometry>
+      <origin rpy="0 1.57 0" xyz="-0.16 0 0"/>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <!-- cylinder length="0.0206" radius="0.0550"/-->
+        <!--cylinder length="0.20" radius="0.26"/-->
+        <mesh filename="package://rosbots_description/meshes/wheel.dae" scale="8 8 8"/>
+      </geometry>
+      <origin rpy="0 -1.57 0" xyz="0 0 0"/>
+    </visual>
+    <inertial>
+      <mass value="3.2" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.008" ixy="0.0" ixz="0.0"
+                iyy="0.008" iyz="0.0" 
+                izz="0.008" />
+    </inertial>
+  </link>
+
+  <joint name="ultra_joint" type="fixed">
+    <origin xyz="0 -0.73 -0.12" rpy="3.14 0 -1.57" />
+    <parent link="base_link"/>
+    <child link="ultrasonic_link" />
+  </joint>
+
+  <link name="ultrasonic_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://rosbots_description/meshes/new/ultrasonic.dae" scale="9.6 9.6 9.6"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://rosbots_description/meshes/new/ultrasonic.dae" scale="9.6 9.6 9.6"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+    <!-- inertial>
+      <origin xyz="0.01 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.019995" ixy="0.0" ixz="0.0"
+                iyy="0.019995" iyz="0.0" 
+                izz="0.03675" />
+    </inertial-->
+  </link>
+
+  <joint name="pistand1_joint" type="fixed">
+    <origin xyz="0 -0.6 0.02" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="pistand1_link" />
+  </joint>
+
+  <link name="pistand1_link">
+    <visual>
+      <geometry>
+        <box size="0.288 0.288 0.02"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.288 0.288 0.02"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+    <!-- inertial>
+      <origin xyz="0.01 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.019995" ixy="0.0" ixz="0.0"
+                iyy="0.019995" iyz="0.0" 
+                izz="0.03675" />
+    </inertial-->
+  </link>
+
+  <joint name="pistand2_joint" type="fixed">
+    <origin xyz="0 -0.6 0.065" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="pistand2_link" />
+  </joint>
+
+  <link name="pistand2_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.08" radius="0.12"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.08" radius="0.12"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+    <!-- inertial>
+      <origin xyz="0.01 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.019995" ixy="0.0" ixz="0.0"
+                iyy="0.019995" iyz="0.0" 
+                izz="0.03675" />
+    </inertial-->
+  </link>
+
+  <joint name="pistand3_joint" type="fixed">
+    <origin xyz="0.00 -0.72 0.126" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="pistand3_link" />
+  </joint>
+
+  <link name="pistand3_link">
+    <visual>
+      <geometry>
+        <box size="0.12 0.02 0.172"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.12 0.02 0.172"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+    <!-- inertial>
+      <origin xyz="0.01 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.019995" ixy="0.0" ixz="0.0"
+                iyy="0.019995" iyz="0.0" 
+                izz="0.03675" />
+    </inertial-->
+  </link>
+
+  <joint name="picam_joint" type="fixed">
+    <origin xyz="0.00 -0.75 0.3" rpy="0 0 -1.57" />
+    <parent link="base_link"/>
+    <child link="picam_link" />
+  </joint>
+
+  <link name="picam_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://rosbots_description/meshes/new/picam.dae" scale="8 8 8"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 1.57"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://rosbots_description/meshes/new/picam.dae" scale="8 8 8"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 1.57"/>
+    </collision>
+    <!-- inertial>
+      <origin xyz="0.01 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.019995" ixy="0.0" ixz="0.0"
+                iyy="0.019995" iyz="0.0" 
+                izz="0.03675" />
+    </inertial-->
+  </link>
+
+</robot>
